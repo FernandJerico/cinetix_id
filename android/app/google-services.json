@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "383725404057",
+    "project_id": "cinetix-id-1",
+    "storage_bucket": "cinetix-id-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:383725404057:android:6c42f89673b3e69be71d08",
+        "android_client_info": {
+          "package_name": "com.ferico.cinetix_id"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgV7TZSH8NzA-7dYAbxKAWOhTom5KZ_II"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
