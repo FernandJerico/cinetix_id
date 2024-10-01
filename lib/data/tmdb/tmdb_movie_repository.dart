@@ -1,4 +1,5 @@
 import 'package:cinetix_id/data/repositories/movie_repository.dart';
+import 'package:cinetix_id/domain/entities/actor.dart';
 import 'package:cinetix_id/domain/entities/movie.dart';
 import 'package:cinetix_id/domain/entities/movie_detail.dart';
 import 'package:cinetix_id/domain/entities/result.dart';
@@ -17,7 +18,7 @@ class TmdbMovieRepository implements MovieRepository {
   TmdbMovieRepository({Dio? dio}) : dio = dio ?? Dio();
 
   @override
-  Future<Result<List<Movie>>> getActors({required int id}) async {
+  Future<Result<List<Actor>>> getActors({required int id}) async {
     try {
       final response = await dio!.get(
           'https://api.themoviedb.org/3/movie/$id/credits?language=en-US',
@@ -25,7 +26,7 @@ class TmdbMovieRepository implements MovieRepository {
 
       final result = List<Map<String, dynamic>>.from(response.data['cast']);
 
-      return Result.success(result.map((e) => Movie.fromJSON(e)).toList());
+      return Result.success(result.map((e) => Actor.fromJSON(e)).toList());
     } on DioException catch (e) {
       return Result.failed('${e.message}');
     }
