@@ -30,12 +30,12 @@ class DummyUserRepositort implements UserRepository {
 
   @override
   Future<Result<User>> updateProfilePicture(
-      {required String uid, required File photoUrl}) {
+      {required User user, required File photoUrl}) {
     throw UnimplementedError();
   }
 
   @override
-  Future<Result<User>> updateUser({required String uid}) {
+  Future<Result<User>> updateUser({required User user}) {
     throw UnimplementedError();
   }
 

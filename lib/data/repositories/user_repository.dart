@@ -12,10 +12,10 @@ abstract interface class UserRepository {
       int balance = 0});
 
   Future<Result<User>> getUser({required String uid});
-  Future<Result<User>> updateUser({required String uid});
+  Future<Result<User>> updateUser({required User user});
   Future<Result<int>> getUserBalance({required String uid});
   Future<Result<User>> updateUserBalance(
       {required String uid, required int balance});
   Future<Result<User>> updateProfilePicture(
-      {required String uid, required File photoUrl});
+      {required User user, required File photoUrl});
 }
