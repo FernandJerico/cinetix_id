@@ -18,7 +18,9 @@ class CreateTransaction
     var result = await _transactionRepository.createTransaction(
         transaction: params.transaction.copyWith(
             transactionTime: transactionTime,
-            id: 'ctx-$transactionTime-${params.transaction.uid}'));
+            id: (params.transaction.id == null)
+                ? 'ctx-$transactionTime-${params.transaction.uid}'
+                : params.transaction.id));
 
     return switch (result) {
       Success(data: _) => const Result.success(null),
