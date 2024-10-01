@@ -13,8 +13,12 @@ class CreateTransaction
 
   @override
   Future<Result<void>> call(CreateTransactionParam params) async {
+    int transactionTime = DateTime.now().millisecondsSinceEpoch;
+
     var result = await _transactionRepository.createTransaction(
-        transaction: params.transaction);
+        transaction: params.transaction.copyWith(
+            transactionTime: transactionTime,
+            id: 'ctx-$transactionTime-${params.transaction.uid}'));
 
     return switch (result) {
       Success(data: _) => const Result.success(null),
