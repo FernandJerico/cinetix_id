@@ -4,7 +4,7 @@ import 'package:cinetix_id/domain/entities/result.dart';
 import 'package:cinetix_id/domain/entities/user.dart';
 
 abstract interface class UserRepository {
-  Future<Result<String>> createUser(
+  Future<Result<User>> createUser(
       {required String uid,
       required String email,
       required String name,

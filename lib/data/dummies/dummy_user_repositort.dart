@@ -6,7 +6,7 @@ import 'package:cinetix_id/domain/entities/user.dart';
 
 class DummyUserRepositort implements UserRepository {
   @override
-  Future<Result<String>> createUser(
+  Future<Result<User>> createUser(
       {required String uid,
       required String email,
       required String name,

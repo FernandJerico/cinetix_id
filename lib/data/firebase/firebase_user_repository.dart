@@ -14,7 +14,7 @@ class FirebaseUserRepository implements UserRepository {
       : _firestore = firestore ?? FirebaseFirestore.instance;
 
   @override
-  Future<Result<String>> createUser(
+  Future<Result<User>> createUser(
       {required String uid,
       required String email,
       required String name,
@@ -35,7 +35,7 @@ class FirebaseUserRepository implements UserRepository {
         await collectionReference.doc(uid).get();
 
     if (result.exists) {
-      return Result.success(User.fromJson(result.data()!).uid);
+      return Result.success(User.fromJson(result.data()!));
     } else {
       return const Result.failed('Failed to create user data');
     }
