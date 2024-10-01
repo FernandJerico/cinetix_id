@@ -28,7 +28,7 @@ class Register implements UseCase<Result<User>, RegisterParam> {
           photoUrl: params.photoUrl);
 
       if (userResult.isSuccess) {
-        return Result.success(userResult.resultValue as User);
+        return Result.success(userResult.resultValue!);
       } else {
         return Result.failed(userResult.errorMessage!);
       }
