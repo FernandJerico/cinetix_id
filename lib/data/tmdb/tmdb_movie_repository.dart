@@ -1,5 +1,6 @@
 import 'package:cinetix_id/data/repositories/movie_repository.dart';
 import 'package:cinetix_id/domain/entities/movie.dart';
+import 'package:cinetix_id/domain/entities/movie_detail.dart';
 import 'package:cinetix_id/domain/entities/result.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -31,19 +32,6 @@ class TmdbMovieRepository implements MovieRepository {
   }
 
   @override
-  Future<Result<List<Movie>>> getDetail({required int id}) async {
-    try {
-      final response = await dio!.get(
-          'https://api.themoviedb.org/3/movie/$id?language=en-US',
-          options: _options);
-
-      return Result.success([Movie.fromJSON(response.data)]);
-    } on DioException catch (e) {
-      return Result.failed('${e.message}');
-    }
-  }
-
-  @override
   Future<Result<List<Movie>>> getNowPlaying({int page = 1}) async =>
       _getMovies(_MovieCategory.nowPlaying.toString(), page: page);
 
@@ -61,6 +49,19 @@ class TmdbMovieRepository implements MovieRepository {
       final result = List<Map<String, dynamic>>.from(response.data['results']);
 
       return Result.success(result.map((e) => Movie.fromJSON(e)).toList());
+    } on DioException catch (e) {
+      return Result.failed('${e.message}');
+    }
+  }
+
+  @override
+  Future<Result<MovieDetail>> getDetail({required int id}) async {
+    try {
+      final response = await dio!.get(
+          'https://api.themoviedb.org/3/movie/$id?language=en-US',
+          options: _options);
+
+      return Result.success(MovieDetail.fromJSON(response.data));
     } on DioException catch (e) {
       return Result.failed('${e.message}');
     }
