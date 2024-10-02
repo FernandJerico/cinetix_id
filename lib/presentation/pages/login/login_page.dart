@@ -77,8 +77,12 @@ class LoginPage extends ConsumerWidget {
                             }
                           },
                           label: 'Login')
-                      : const ButtonLoading.filled(),
-                  _ => const ButtonLoading.filled(),
+                      : ButtonLoading.filled(
+                          onPressed: () {},
+                        ),
+                  _ => ButtonLoading.filled(
+                      onPressed: () {},
+                    ),
                 },
                 verticalSpace(24),
                 Row(

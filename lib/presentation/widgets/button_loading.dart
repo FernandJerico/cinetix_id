@@ -7,6 +7,7 @@ enum ButtonLoadingStyleType { filled, outlined }
 class ButtonLoading extends StatelessWidget {
   const ButtonLoading.filled({
     super.key,
+    required this.onPressed,
     this.style = ButtonLoadingStyleType.filled,
     this.color = AppColors.primaryColor,
     this.iconColor = Colors.white,
@@ -18,6 +19,7 @@ class ButtonLoading extends StatelessWidget {
 
   const ButtonLoading.outlined({
     super.key,
+    required this.onPressed,
     this.style = ButtonLoadingStyleType.outlined,
     this.color = Colors.transparent,
     this.iconColor = AppColors.primaryColor,
@@ -27,6 +29,7 @@ class ButtonLoading extends StatelessWidget {
     this.disabled = false,
   });
 
+  final Function() onPressed;
   final ButtonLoadingStyleType style;
   final Color color;
   final Color iconColor;
@@ -42,7 +45,7 @@ class ButtonLoading extends StatelessWidget {
       width: width,
       child: style == ButtonLoadingStyleType.filled
           ? ElevatedButton(
-              onPressed: null,
+              onPressed: disabled ? null : onPressed,
               style: ElevatedButton.styleFrom(
                 backgroundColor: color,
                 shape: RoundedRectangleBorder(
@@ -52,7 +55,7 @@ class ButtonLoading extends StatelessWidget {
               child: CircularProgressIndicator(color: iconColor),
             )
           : OutlinedButton(
-              onPressed: null,
+              onPressed: disabled ? null : onPressed,
               style: OutlinedButton.styleFrom(
                 backgroundColor: color,
                 side: BorderSide(color: iconColor),
