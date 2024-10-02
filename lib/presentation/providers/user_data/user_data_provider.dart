@@ -9,6 +9,7 @@ import 'package:cinetix_id/domain/usecases/top_up/top_up_param.dart';
 import 'package:cinetix_id/domain/usecases/upload_profile_picture/upload_profile_picture.dart';
 import 'package:cinetix_id/presentation/providers/movie/now_playing_provider.dart';
 import 'package:cinetix_id/presentation/providers/movie/upcoming_provider.dart';
+import 'package:cinetix_id/presentation/providers/transaction_data/transaction_data_provider.dart';
 import 'package:cinetix_id/presentation/providers/usecases/logout_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -116,6 +117,7 @@ class UserData extends _$UserData {
       if (result.isSuccess) {
         refreshUserData();
         // refresh Transaction data
+        ref.read(transactionDataProvider.notifier).refreshTransactionData();
       }
     }
   }
