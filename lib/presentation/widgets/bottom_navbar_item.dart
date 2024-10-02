@@ -26,8 +26,7 @@ class BottomNavbarItem extends StatelessWidget {
         ),
         Text(
           title,
-          style: TextStyle(
-            // color: isSelected ? Colors.black : Colors.grey,
+          style: const TextStyle(
             fontSize: 9,
             fontWeight: FontWeight.bold,
           ),
