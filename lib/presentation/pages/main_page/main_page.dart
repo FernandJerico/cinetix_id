@@ -1,3 +1,4 @@
+import 'package:cinetix_id/presentation/extensions/build_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,6 +20,8 @@ class _MainPageState extends ConsumerState<MainPage> {
       (previous, next) {
         if (previous != null && next is AsyncData && next.value == null) {
           ref.read(routerProvider).goNamed('login');
+        } else if (next is AsyncError) {
+          context.showSnackBar(next.error.toString());
         }
       },
     );
