@@ -1,6 +1,7 @@
 import 'package:cinetix_id/presentation/misc/method.dart';
 import 'package:cinetix_id/presentation/pages/movie/methdos/user_info.dart';
 import 'package:cinetix_id/presentation/providers/movie/upcoming_provider.dart';
+import 'package:cinetix_id/presentation/providers/router/router_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -32,7 +33,9 @@ class MoviePage extends ConsumerWidget {
             ...movieList(
               title: 'Now Playing',
               movies: ref.watch(nowPlayingProvider),
-              onTap: (movie) {},
+              onTap: (movie) {
+                ref.read(routerProvider).pushNamed('detail', extra: movie);
+              },
             ),
             verticalSpace(30),
             ...promotionList(promotionImageFilename),
