@@ -1,7 +1,9 @@
 import 'package:cinetix_id/domain/entities/movie.dart';
+import 'package:cinetix_id/domain/entities/movie_detail.dart';
 import 'package:cinetix_id/presentation/pages/login/login_page.dart';
 import 'package:cinetix_id/presentation/pages/main_page/main_page.dart';
 import 'package:cinetix_id/presentation/pages/movie/detail_movie_page.dart';
+import 'package:cinetix_id/presentation/pages/time_booking/time_booking_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -31,6 +33,13 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
         name: 'detail',
         builder: (context, state) => DetailMoviePage(
           movie: state.extra as Movie,
+        ),
+      ),
+      GoRoute(
+        path: '/time-booking',
+        name: 'time-booking',
+        builder: (context, state) => TimeBookingPage(
+          movieDetail: state.extra as MovieDetail,
         ),
       ),
     ], initialLocation: '/login', debugLogDiagnostics: false);

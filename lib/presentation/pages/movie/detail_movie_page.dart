@@ -1,4 +1,5 @@
 import 'package:cinetix_id/domain/entities/movie.dart';
+import 'package:cinetix_id/domain/entities/movie_detail.dart';
 import 'package:cinetix_id/presentation/misc/constant.dart';
 import 'package:cinetix_id/presentation/misc/method.dart';
 import 'package:cinetix_id/presentation/providers/movie/movie_detail_provider.dart';
@@ -67,7 +68,15 @@ class DetailMoviePage extends ConsumerWidget {
                         backgroundColor: AppColors.saffron,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
-                    onPressed: () {},
+                    onPressed: () {
+                      MovieDetail? movieDetail = asyncMovieDetail.valueOrNull;
+
+                      if (movieDetail != null) {
+                        ref
+                            .read(routerProvider)
+                            .goNamed('time-booking', extra: movieDetail);
+                      }
+                    },
                     child: const Text('Book this movie')),
               ),
             ],
