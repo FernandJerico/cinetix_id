@@ -1,4 +1,5 @@
 import 'package:cinetix_id/presentation/extensions/build_context_extension.dart';
+import 'package:cinetix_id/presentation/pages/profile/profile_page.dart';
 import 'package:cinetix_id/presentation/widgets/bottom_navbar.dart';
 import 'package:cinetix_id/presentation/widgets/bottom_navbar_item.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,7 @@ class _MainPageState extends ConsumerState<MainPage> {
             children: const [
               Center(child: Text('Home')),
               Center(child: Text('Ticket')),
-              Center(child: Text('Profile')),
+              Center(child: ProfilePage()),
             ],
           ),
           BottomNavbar(
