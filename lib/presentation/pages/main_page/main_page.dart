@@ -1,4 +1,5 @@
 import 'package:cinetix_id/presentation/extensions/build_context_extension.dart';
+import 'package:cinetix_id/presentation/pages/movie/movie_page.dart';
 import 'package:cinetix_id/presentation/pages/profile/profile_page.dart';
 import 'package:cinetix_id/presentation/widgets/bottom_navbar.dart';
 import 'package:cinetix_id/presentation/widgets/bottom_navbar_item.dart';
@@ -41,7 +42,7 @@ class _MainPageState extends ConsumerState<MainPage> {
               });
             },
             children: const [
-              Center(child: Text('Home')),
+              Center(child: MoviePage()),
               Center(child: Text('Ticket')),
               Center(child: ProfilePage()),
             ],
