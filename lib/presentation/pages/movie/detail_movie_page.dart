@@ -9,6 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'methdos/background.dart';
+import 'methdos/cast_and_crew.dart';
+import 'methdos/movie_overview.dart';
+import 'methdos/movie_short_info.dart';
 
 class DetailMoviePage extends ConsumerWidget {
   final Movie movie;
@@ -46,15 +49,15 @@ class DetailMoviePage extends ConsumerWidget {
                       fit: BoxFit.cover,
                     ),
                     verticalSpace(24),
-                    //title
-                    // ...movieShortInfo(),
+                    ...movieShortInfo(
+                        asyncMovieDetail: asyncMovieDetail, context: context),
                     verticalSpace(20),
-                    // ...movieOverview(),
+                    ...movieOverview(asyncMovieDetail),
                     verticalSpace(40),
                   ],
                 ),
               ),
-              // ...castAndCrew(),
+              ...castAndCrew(movie: movie, ref: ref),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
