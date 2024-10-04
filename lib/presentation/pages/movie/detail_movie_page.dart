@@ -74,7 +74,7 @@ class DetailMoviePage extends ConsumerWidget {
                       if (movieDetail != null) {
                         ref
                             .read(routerProvider)
-                            .goNamed('time-booking', extra: movieDetail);
+                            .pushNamed('time-booking', extra: movieDetail);
                       }
                     },
                     child: const Text('Book this movie')),

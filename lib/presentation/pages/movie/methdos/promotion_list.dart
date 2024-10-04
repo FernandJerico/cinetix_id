@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 List<Widget> promotionList(List<String> promotionsImageFilename) => [
       Padding(
-        padding: EdgeInsets.only(left: 24, bottom: 16),
+        padding: const EdgeInsets.only(left: 24, bottom: 16),
         child: Text(
           'Promotions',
           style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold),

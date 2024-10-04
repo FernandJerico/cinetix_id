@@ -20,11 +20,12 @@ class SelectableCard extends StatelessWidget {
     return GestureDetector(
       onTap: isEnable ? onTap : null,
       child: Container(
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-            color: isSelected ? AppColors.saffron.withOpacity(0.3) : null,
+            color: isSelected ? AppColors.primaryColor.withOpacity(0.3) : null,
             borderRadius: BorderRadius.circular(5),
-            border:
-                Border.all(color: isEnable ? AppColors.saffron : Colors.grey)),
+            border: Border.all(
+                color: isEnable ? AppColors.primaryColor : Colors.grey)),
         child: Center(
           child: Text(
             text,
