@@ -67,23 +67,8 @@ class _SeatBookingPageState extends ConsumerState<SeatBookingPage> {
                       18,
                       (index) => index + 1,
                     ),
-                    onTap: (seatNumber) {
-                      if (!selectedSeats.contains(seatNumber)) {
-                        setState(() {
-                          selectedSeats.add(seatNumber);
-                        });
-                      } else {
-                        setState(() {
-                          selectedSeats.remove(seatNumber);
-                        });
-                      }
-                    },
-                    seatStatusChecker: (seatNumber) =>
-                        reservedSeats.contains(seatNumber)
-                            ? SeatStatus.reserved
-                            : selectedSeats.contains(seatNumber)
-                                ? SeatStatus.selected
-                                : SeatStatus.available,
+                    onTap: onSeatTap,
+                    seatStatusChecker: seatStatusChecker,
                   ),
                   horizontalSpace(30),
                   seatSection(
@@ -91,23 +76,8 @@ class _SeatBookingPageState extends ConsumerState<SeatBookingPage> {
                       18,
                       (index) => index + 19,
                     ),
-                    onTap: (seatNumber) {
-                      if (!selectedSeats.contains(seatNumber)) {
-                        setState(() {
-                          selectedSeats.add(seatNumber);
-                        });
-                      } else {
-                        setState(() {
-                          selectedSeats.remove(seatNumber);
-                        });
-                      }
-                    },
-                    seatStatusChecker: (seatNumber) =>
-                        reservedSeats.contains(seatNumber)
-                            ? SeatStatus.reserved
-                            : selectedSeats.contains(seatNumber)
-                                ? SeatStatus.selected
-                                : SeatStatus.available,
+                    onTap: onSeatTap,
+                    seatStatusChecker: seatStatusChecker,
                   ),
                 ],
               )
@@ -117,4 +87,22 @@ class _SeatBookingPageState extends ConsumerState<SeatBookingPage> {
       ],
     ));
   }
+
+  void onSeatTap(seatNumber) {
+    if (!selectedSeats.contains(seatNumber)) {
+      setState(() {
+        selectedSeats.add(seatNumber);
+      });
+    } else {
+      setState(() {
+        selectedSeats.remove(seatNumber);
+      });
+    }
+  }
+
+  SeatStatus seatStatusChecker(seatNumber) => reservedSeats.contains(seatNumber)
+      ? SeatStatus.reserved
+      : selectedSeats.contains(seatNumber)
+          ? SeatStatus.selected
+          : SeatStatus.available;
 }
