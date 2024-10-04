@@ -14,7 +14,7 @@ class Seat extends StatelessWidget {
       {super.key,
       this.number,
       this.status = SeatStatus.available,
-      this.size = 24,
+      this.size = 30,
       this.onTap});
 
   @override
@@ -29,7 +29,7 @@ class Seat extends StatelessWidget {
                 ? Colors.white
                 : status == SeatStatus.reserved
                     ? Colors.grey
-                    : AppColors.primaryColor,
+                    : AppColors.saffron,
             borderRadius: BorderRadius.circular(5),
           ),
           child: Center(

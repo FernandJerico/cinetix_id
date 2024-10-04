@@ -1,7 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:math';
 
+import 'package:cinetix_id/presentation/misc/method.dart';
 import 'package:cinetix_id/presentation/pages/seat-booking/method/movie_screen.dart';
+import 'package:cinetix_id/presentation/pages/seat-booking/method/seat_section.dart';
 import 'package:cinetix_id/presentation/providers/router/router_provider.dart';
 import 'package:cinetix_id/presentation/widgets/back_navigation_bar.dart';
 import 'package:cinetix_id/presentation/widgets/seat.dart';
@@ -57,6 +59,58 @@ class _SeatBookingPageState extends ConsumerState<SeatBookingPage> {
                 onTap: () => ref.read(routerProvider).pop(),
               ),
               movieScreen(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  seatSection(
+                    seatNumber: List.generate(
+                      18,
+                      (index) => index + 1,
+                    ),
+                    onTap: (seatNumber) {
+                      if (!selectedSeats.contains(seatNumber)) {
+                        setState(() {
+                          selectedSeats.add(seatNumber);
+                        });
+                      } else {
+                        setState(() {
+                          selectedSeats.remove(seatNumber);
+                        });
+                      }
+                    },
+                    seatStatusChecker: (seatNumber) =>
+                        reservedSeats.contains(seatNumber)
+                            ? SeatStatus.reserved
+                            : selectedSeats.contains(seatNumber)
+                                ? SeatStatus.selected
+                                : SeatStatus.available,
+                  ),
+                  horizontalSpace(30),
+                  seatSection(
+                    seatNumber: List.generate(
+                      18,
+                      (index) => index + 19,
+                    ),
+                    onTap: (seatNumber) {
+                      if (!selectedSeats.contains(seatNumber)) {
+                        setState(() {
+                          selectedSeats.add(seatNumber);
+                        });
+                      } else {
+                        setState(() {
+                          selectedSeats.remove(seatNumber);
+                        });
+                      }
+                    },
+                    seatStatusChecker: (seatNumber) =>
+                        reservedSeats.contains(seatNumber)
+                            ? SeatStatus.reserved
+                            : selectedSeats.contains(seatNumber)
+                                ? SeatStatus.selected
+                                : SeatStatus.available,
+                  ),
+                ],
+              )
             ],
           ),
         ),
