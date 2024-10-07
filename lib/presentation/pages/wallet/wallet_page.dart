@@ -1,4 +1,5 @@
 import 'package:cinetix_id/presentation/misc/method.dart';
+import 'package:cinetix_id/presentation/pages/wallet/method/recent_transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -22,8 +23,8 @@ class WalletPage extends ConsumerWidget {
                   onTap: () => ref.read(routerProvider).pop(),
                 ),
                 verticalSpace(24),
-                // const WalletCard(),
                 verticalSpace(24),
+                ...recentTransactions(ref),
               ],
             ),
           ),
