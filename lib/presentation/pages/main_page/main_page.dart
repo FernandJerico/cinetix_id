@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:cinetix_id/domain/entities/user.dart';
 import 'package:cinetix_id/presentation/extensions/build_context_extension.dart';
 import 'package:cinetix_id/presentation/pages/movie/movie_page.dart';
 import 'package:cinetix_id/presentation/pages/profile/profile_page.dart';
@@ -11,7 +14,8 @@ import '../../providers/router/router_provider.dart';
 import '../../providers/user_data/user_data_provider.dart';
 
 class MainPage extends ConsumerStatefulWidget {
-  const MainPage({super.key});
+  final File? imageFile;
+  const MainPage({this.imageFile, super.key});
 
   @override
   ConsumerState<MainPage> createState() => _MainPageState();
@@ -20,6 +24,19 @@ class MainPage extends ConsumerStatefulWidget {
 class _MainPageState extends ConsumerState<MainPage> {
   PageController pageController = PageController();
   int selectedPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    User? user = ref.read(userDataProvider).valueOrNull;
+
+    if (widget.imageFile != null && user != null) {
+      ref
+          .read(userDataProvider.notifier)
+          .uploadProfilePicture(user: user, imageFile: widget.imageFile!);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     ref.listen(

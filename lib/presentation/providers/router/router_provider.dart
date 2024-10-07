@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cinetix_id/domain/entities/movie.dart';
 import 'package:cinetix_id/domain/entities/movie_detail.dart';
 import 'package:cinetix_id/presentation/pages/booking-confirmation/booking_confirmation_page.dart';
@@ -20,7 +22,9 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
       GoRoute(
         path: '/main',
         name: 'main',
-        builder: (context, state) => const MainPage(),
+        builder: (context, state) => MainPage(
+          imageFile: state.extra != null ? state.extra as File : null,
+        ),
       ),
       GoRoute(
         path: '/login',
