@@ -1,3 +1,4 @@
+import 'package:cinetix_id/presentation/pages/wallet/method/card_content.dart';
 import 'package:cinetix_id/presentation/pages/wallet/method/card_pattern.dart';
 import 'package:cinetix_id/presentation/pages/wallet/method/membership_banner.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ Widget walletCard(WidgetRef ref) => Container(
         children: [
           cardPattern(),
           membershipBanner(),
+          cardContent(ref),
         ],
       ),
     );
