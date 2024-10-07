@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:math';
 
+import 'package:cinetix_id/presentation/extensions/build_context_extension.dart';
 import 'package:cinetix_id/presentation/misc/method.dart';
 import 'package:cinetix_id/presentation/pages/seat-booking/method/movie_screen.dart';
 import 'package:cinetix_id/presentation/pages/seat-booking/method/seat_section.dart';
@@ -92,7 +93,23 @@ class _SeatBookingPageState extends ConsumerState<SeatBookingPage> {
                     const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               verticalSpace(40),
-              Button.filled(borderRadius: 10, onPressed: () {}, label: 'Next')
+              Button.filled(
+                  borderRadius: 10,
+                  onPressed: () {
+                    if (selectedSeats.isEmpty) {
+                      context.showSnackBar('Please select at least one seat');
+                    } else {
+                      final updatedTransaction = transaction.copyWith(
+                          seats:
+                              (selectedSeats.map((e) => e.toString()).toList()),
+                          ticketAmount: selectedSeats.length,
+                          ticketPrice: 25000);
+
+                      ref.read(routerProvider).pushNamed('booking-confirmation',
+                          extra: (movieDetail, updatedTransaction));
+                    }
+                  },
+                  label: 'Next')
             ],
           ),
         ),
