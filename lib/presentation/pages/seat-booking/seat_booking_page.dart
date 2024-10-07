@@ -13,6 +13,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cinetix_id/domain/entities/transaction.dart';
 
 import '../../../domain/entities/movie_detail.dart';
+import '../../widgets/buttons.dart';
+import 'method/legend.dart';
 
 class SeatBookingPage extends ConsumerStatefulWidget {
   final (MovieDetail, Transaction) transactionDetail;
@@ -80,7 +82,17 @@ class _SeatBookingPageState extends ConsumerState<SeatBookingPage> {
                     seatStatusChecker: seatStatusChecker,
                   ),
                 ],
-              )
+              ),
+              verticalSpace(20),
+              legend(),
+              verticalSpace(40),
+              Text(
+                '${selectedSeats.length} seats selected',
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              verticalSpace(40),
+              Button.filled(borderRadius: 10, onPressed: () {}, label: 'Next')
             ],
           ),
         ),
