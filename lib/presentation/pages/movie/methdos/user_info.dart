@@ -4,6 +4,8 @@ import 'package:cinetix_id/presentation/providers/user_data/user_data_provider.d
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../providers/router/router_provider.dart';
+
 Widget userInfo(WidgetRef ref) => Padding(
       padding: const EdgeInsets.fromLTRB(24, 2, 24, 0),
       child: Row(
@@ -44,7 +46,9 @@ Widget userInfo(WidgetRef ref) => Padding(
               ),
               verticalSpace(6),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  ref.read(routerProvider).pushNamed('wallet');
+                },
                 child: Row(
                   children: [
                     SizedBox(
