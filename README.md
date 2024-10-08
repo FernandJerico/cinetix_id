@@ -14,7 +14,7 @@ Cinetix.id adalah aplikasi pemesanan tiket bioskop secara online yang dikembangk
 ## Instalasi & Penggunaan 🚀
 1. Clone repository ini:
    ```bash
-   git clone https://github.com/username/cinetix.id.git
+   git clone https://github.com/FernandJerico/cinetix_id.git
 2. Masuk ke direktori proyek:
    ```bash
    cd cinetix.id
